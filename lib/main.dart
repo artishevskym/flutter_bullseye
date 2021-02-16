@@ -2,6 +2,21 @@ import 'package:flutter/material.dart';
 
 void main() => runApp(BullsEyeApp());
 
+/*
+TO-DO LIST
+- Add the "Hit Me" button
+- Show a popup when the user taps it
+- Put game info on screen
+- Put slider on screen: 1->100
+- Read value of the slider
+- Generate random number
+- Calculate and show score
+- Add "start over" button
+- Reset game if you tap it
+- Put app in landscape
+- Make it look pretty
+ */
+
 class BullsEyeApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -31,7 +46,7 @@ class _GamePageState extends State<GamePage> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
               Text(
-                "Hello BullsEye",
+                "Hello BullsEye!!!",
                 style:
                     TextStyle(fontWeight: FontWeight.bold, color: Colors.green),
               ),
