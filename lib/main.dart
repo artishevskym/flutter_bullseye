@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 void main() => runApp(BullsEyeApp());
 
@@ -20,6 +21,11 @@ TO-DO LIST
 class BullsEyeApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    SystemChrome.setPreferredOrientations([
+      DeviceOrientation.landscapeLeft,
+      DeviceOrientation.landscapeRight
+    ]);
+
     return MaterialApp(
       title: 'BullsEye',
       theme: ThemeData(primarySwatch: Colors.blue),
@@ -39,7 +45,6 @@ class GamePage extends StatefulWidget {
 
 class _GamePageState extends State<GamePage> {
   bool _alertIsVisible = false;
-  bool _whoIsThereVisible = false;
 
   @override
   Widget build(BuildContext context) {
@@ -68,19 +73,6 @@ class _GamePageState extends State<GamePage> {
                   ),
                 ),
               ),
-              FlatButton(
-                child: Text(
-                  'Knock, knock!',
-                  style: TextStyle(
-                    color: Colors.pink,
-                  )
-                ),
-                onPressed: () {
-                  print("Knock knock pressed!");
-                  this._whoIsThereVisible = true;
-                  _showWhoIsThereAlert(context);
-                },
-              ),
             ]),
       ),
     );
@@ -101,30 +93,6 @@ class _GamePageState extends State<GamePage> {
         return AlertDialog(
           title: Text("Hello there!"),
           content: Text("This is my first pop-up."),
-          actions: <Widget>[
-            okButton,
-          ],
-          elevation: 5,
-        );
-      },
-    );
-  }
-
-  void _showWhoIsThereAlert(BuildContext context) {
-    Widget okButton = FlatButton(
-        child: Text("Owls say who?"),
-        onPressed: () {
-          Navigator.of(context).pop();
-          this._whoIsThereVisible = false;
-          print("Owls say who? pressed! $_whoIsThereVisible");
-        });
-
-    showDialog(
-      context: context,
-      builder: (BuildContext context) {
-        return AlertDialog(
-          title: Text("Who is there?"),
-          content: Text("Owls say."),
           actions: <Widget>[
             okButton,
           ],
