@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_bullseye/prompt.dart';
 import 'package:flutter_bullseye/control.dart';
 import 'package:flutter_bullseye/score.dart';
+import 'package:flutter_bullseye/game_model.dart';
 
 void main() => runApp(BullsEyeApp());
 
@@ -10,8 +11,8 @@ void main() => runApp(BullsEyeApp());
 TO-DO LIST
 + Add the "Hit Me" button
 + Show a popup when the user taps it
-- Put game info on screen
-- Put slider on screen: 1->100
++ Put game info on screen
++ Put slider on screen: 1->100
 - Read value of the slider
 - Generate random number
 - Calculate and show score
@@ -46,6 +47,13 @@ class GamePage extends StatefulWidget {
 
 class _GamePageState extends State<GamePage> {
   bool _alertIsVisible = false;
+  GameModel _model;
+
+  @override
+  void initState() {
+    super.initState();
+    _model = GameModel(50);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -54,8 +62,8 @@ class _GamePageState extends State<GamePage> {
         child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-              Prompt(targetValue: 100),
-              Control(),
+              Prompt(targetValue: _model.target),
+              Control(model: _model),
               FlatButton(
                 onPressed: () {
                   print("Button pressed!");
@@ -70,8 +78,8 @@ class _GamePageState extends State<GamePage> {
                 ),
               ),
               Score(
-                totalScore: 99999,
-                round: 999,
+                totalScore: _model.totalScore,
+                round: _model.round,
               ),
             ]),
       ),

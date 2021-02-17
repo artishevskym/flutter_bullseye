@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'game_model.dart';
 
 class Control extends StatefulWidget {
-  Control({Key key}) : super(key: key);
+  Control({Key key, @required this.model}) : super(key: key);
+  final GameModel model;
 
   @override
   _ControlState createState() => _ControlState();
@@ -21,11 +23,11 @@ class _ControlState extends State<Control> {
         ),
         Expanded(
           child: Slider(
-              value: _currentValue,
+              value: widget.model.current.toDouble(),
               onChanged: (newValue) {
                 setState(() {
                   _currentValue = newValue;
-                  print(_currentValue);
+                  widget.model.current = newValue.toInt();
                 });
               },
               min: 1.0,
