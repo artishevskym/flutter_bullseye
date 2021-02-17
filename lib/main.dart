@@ -15,12 +15,12 @@ TO-DO LIST
 + Put game info on screen
 + Put slider on screen: 1->100
 + Read value of the slider
-- The Dart Standard Library
-- Writing Methods
-- If/Else Statements
-- Variable Scope
-- Generate random number
-- Calculate and show score
++ The Dart Standard Library
++ Writing Methods
++ If/Else Statements
++ Variable Scope
++ Generate random number
++ Calculate and show score
 - Add "start over" button
 - Reset game if you tap it
 - Put app in landscape
@@ -91,9 +91,11 @@ class _GamePageState extends State<GamePage> {
     );
   }
 
+  int _sliderValue() => _model.current;
+
   int _pointsForCurrentRound() {
     var maximumScore = 100;
-    int sliderValue = _model.current;
+    int sliderValue = _sliderValue();
     var difference = _model.target - sliderValue;
     return maximumScore - difference.abs();
   }
@@ -112,7 +114,7 @@ class _GamePageState extends State<GamePage> {
       builder: (BuildContext context) {
         return AlertDialog(
           title: Text("Hello there!"),
-          content: Text("The slide's value is ${_model.current}.\n" +
+          content: Text("The slide's value is ${_sliderValue()}.\n" +
           "You scored ${_pointsForCurrentRound()} points this round."),
           actions: <Widget>[
             okButton,
