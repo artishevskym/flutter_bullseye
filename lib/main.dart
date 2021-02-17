@@ -13,7 +13,7 @@ TO-DO LIST
 + Show a popup when the user taps it
 + Put game info on screen
 + Put slider on screen: 1->100
-- Read value of the slider
++ Read value of the slider
 - Generate random number
 - Calculate and show score
 - Add "start over" button
@@ -100,7 +100,7 @@ class _GamePageState extends State<GamePage> {
       builder: (BuildContext context) {
         return AlertDialog(
           title: Text("Hello there!"),
-          content: Text("This is my first pop-up."),
+          content: Text("The slide's value is ${_model.current}"),
           actions: <Widget>[
             okButton,
           ],
