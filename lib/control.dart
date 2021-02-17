@@ -15,18 +15,26 @@ class _ControlState extends State<Control> {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        Text("1"),
-        Slider(
-            value: _currentValue,
-            onChanged: (newValue) {
-              setState(() {
-                _currentValue = newValue;
-                print(_currentValue);
-              });
-            },
-            min: 1.0,
-            max: 100.0),
-        Text("100"),
+        Padding(
+          padding: const EdgeInsets.all(32.0),
+          child: Text("1"),
+        ),
+        Expanded(
+          child: Slider(
+              value: _currentValue,
+              onChanged: (newValue) {
+                setState(() {
+                  _currentValue = newValue;
+                  print(_currentValue);
+                });
+              },
+              min: 1.0,
+              max: 100.0),
+        ),
+        Padding(
+          padding: const EdgeInsets.all(32.0),
+          child: Text("100"),
+        ),
       ],
     );
   }
