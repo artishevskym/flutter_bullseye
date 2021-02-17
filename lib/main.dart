@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_bullseye/prompt.dart';
+import 'package:flutter_bullseye/control.dart';
+import 'package:flutter_bullseye/score.dart';
 
 void main() => runApp(BullsEyeApp());
 
@@ -21,10 +24,8 @@ TO-DO LIST
 class BullsEyeApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    SystemChrome.setPreferredOrientations([
-      DeviceOrientation.landscapeLeft,
-      DeviceOrientation.landscapeRight
-    ]);
+    SystemChrome.setPreferredOrientations(
+        [DeviceOrientation.landscapeLeft, DeviceOrientation.landscapeRight]);
 
     return MaterialApp(
       title: 'BullsEye',
@@ -53,13 +54,8 @@ class _GamePageState extends State<GamePage> {
         child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-              Text(
-                "Hello BullsEye!!!",
-                style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  color: Colors.green,
-                ),
-              ),
+              Prompt(targetValue: 100),
+              Control(),
               FlatButton(
                 onPressed: () {
                   print("Button pressed!");
@@ -72,6 +68,10 @@ class _GamePageState extends State<GamePage> {
                     color: Colors.blue,
                   ),
                 ),
+              ),
+              Score(
+                totalScore: 99999,
+                round: 999,
               ),
             ]),
       ),
