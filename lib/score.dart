@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bullseye/textstyles.dart';
+import 'package:flutter_bullseye/styledbutton.dart';
 
 class Score extends StatelessWidget {
   Score({
@@ -18,8 +19,8 @@ class Score extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        FlatButton(
-          child: Text("Start Over"),
+        StyledButton(
+          icon: Icons.refresh,
           onPressed: () {
             onStartOver();
           },
@@ -54,8 +55,8 @@ class Score extends StatelessWidget {
             ],
           ),
         ),
-        FlatButton(
-          child: Text("Info"),
+        StyledButton(
+          icon: Icons.info,
           onPressed: () {},
         ),
       ],
