@@ -8,25 +8,6 @@ import 'dart:math';
 
 void main() => runApp(BullsEyeApp());
 
-/*
-TO-DO LIST
-+ Add the "Hit Me" button
-+ Show a popup when the user taps it
-+ Put game info on screen
-+ Put slider on screen: 1->100
-+ Read value of the slider
-+ The Dart Standard Library
-+ Writing Methods
-+ If/Else Statements
-+ Variable Scope
-+ Generate random number
-+ Calculate and show score
-- Add "start over" button
-- Reset game if you tap it
-- Put app in landscape
-- Make it look pretty
- */
-
 class BullsEyeApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -57,7 +38,7 @@ class _GamePageState extends State<GamePage> {
   @override
   void initState() {
     super.initState();
-    _model = GameModel(Random().nextInt(100) + 1);
+    _model = GameModel(_newTargetValue());
   }
 
   @override
@@ -84,6 +65,7 @@ class _GamePageState extends State<GamePage> {
               Score(
                 totalScore: _model.totalScore,
                 round: _model.round,
+                onStartOver: _startNewGame,
               ),
             ]),
       ),
@@ -108,6 +90,17 @@ class _GamePageState extends State<GamePage> {
 
   int _amountOff() => (_model.target - _sliderValue()).abs();
 
+  int _newTargetValue() => Random().nextInt(100) + 1;
+
+  void _startNewGame() {
+    setState(() {
+      _model.totalScore = GameModel.SCORE_START;
+      _model.round = GameModel.ROUND_START;
+      _model.target = _newTargetValue();
+      _model.current = GameModel.SLIDER_START;
+    });
+  }
+
   void _showAlert(BuildContext context) {
     Widget okButton = FlatButton(
         child: Text("Awesome!"),
@@ -116,7 +109,7 @@ class _GamePageState extends State<GamePage> {
           this._alertIsVisible = false;
           setState(() {
             _model.totalScore += _pointsForCurrentRound();
-            _model.target = Random().nextInt(100) + 1;
+            _model.target = _newTargetValue();
             _model.round += 1;
           });
         });
