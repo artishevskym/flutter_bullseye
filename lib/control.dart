@@ -18,8 +18,11 @@ class _ControlState extends State<Control> {
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         Padding(
-          padding: const EdgeInsets.all(32.0),
-          child: Text("1"),
+          padding: const EdgeInsets.only(left: 90.0),
+          child: Text("1",
+              style: TextStyle(
+                fontWeight: FontWeight.bold,
+              )),
         ),
         Expanded(
           child: Slider(
@@ -34,8 +37,11 @@ class _ControlState extends State<Control> {
               max: 100.0),
         ),
         Padding(
-          padding: const EdgeInsets.all(32.0),
-          child: Text("100"),
+          padding: const EdgeInsets.only(right: 64.0),
+          child: Text("100",
+              style: TextStyle(
+                fontWeight: FontWeight.bold,
+              )),
         ),
       ],
     );
