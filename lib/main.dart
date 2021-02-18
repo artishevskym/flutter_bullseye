@@ -72,10 +72,7 @@ class _GamePageState extends State<GamePage> {
               FlatButton(
                 onPressed: () {
                   _showAlert(context);
-                  setState(() {
-                    this._alertIsVisible = true;
-                    _model.totalScore += _pointsForCurrentRound();
-                  });
+                  this._alertIsVisible = true;
                 },
                 child: Text(
                   'Hit Me!',
@@ -108,7 +105,10 @@ class _GamePageState extends State<GamePage> {
         onPressed: () {
           Navigator.of(context).pop();
           this._alertIsVisible = false;
-          print("Awesome pressed! $_alertIsVisible");
+          setState(() {
+            _model.totalScore += _pointsForCurrentRound();
+            _model.target = Random().nextInt(100) + 1;
+          });
         });
 
     showDialog(
