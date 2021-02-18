@@ -94,10 +94,10 @@ class _GamePageState extends State<GamePage> {
 
   int _pointsForCurrentRound() {
     var maximumScore = 100;
-    int sliderValue = _sliderValue();
-    var difference = _model.target - sliderValue;
-    return maximumScore - difference.abs();
+    return maximumScore - _amountOff();
   }
+
+  int _amountOff() => (_model.target - _sliderValue()).abs();
 
   void _showAlert(BuildContext context) {
     Widget okButton = FlatButton(
@@ -129,7 +129,7 @@ class _GamePageState extends State<GamePage> {
   }
 
   String _alertTitle() {
-    var difference = (_model.target - _sliderValue()).abs();
+    var difference = _amountOff();
 
     String title;
     if (difference == 0) {
