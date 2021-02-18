@@ -116,7 +116,7 @@ class _GamePageState extends State<GamePage> {
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: Text("Hello there!"),
+          title: Text(_alertTitle()),
           content: Text("The slide's value is ${_sliderValue()}.\n" +
           "You scored ${_pointsForCurrentRound()} points this round."),
           actions: <Widget>[
@@ -126,5 +126,22 @@ class _GamePageState extends State<GamePage> {
         );
       },
     );
+  }
+
+  String _alertTitle() {
+    var difference = (_model.target - _sliderValue()).abs();
+
+    String title;
+    if (difference == 0) {
+      title = "Perfect";
+    } else if (difference < 5) {
+      title = "You almost had it!";
+    } else if (difference <= 10) {
+      title = "Not bad.";
+    } else {
+      title = "Are you even trying?";
+    }
+
+    return title;
   }
 }
