@@ -24,7 +24,7 @@ class Score extends StatelessWidget {
           child: Row(
             children: [
               Text("Score: "),
-              Text("99999"),
+              Text("$totalScore"),
             ],
           ),
         ),

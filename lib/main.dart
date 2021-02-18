@@ -71,9 +71,11 @@ class _GamePageState extends State<GamePage> {
               Control(model: _model),
               FlatButton(
                 onPressed: () {
-                  print("Button pressed!");
-                  this._alertIsVisible = true;
                   _showAlert(context);
+                  setState(() {
+                    this._alertIsVisible = true;
+                    _model.totalScore += _pointsForCurrentRound();
+                  });
                 },
                 child: Text(
                   'Hit Me!',
